@@ -13,11 +13,11 @@ const TodoApp = () => {
     allTodoLists.splice(delIndex, 1);
     setTodoLists(allTodoLists);
     localStorage.setItem("todolists", JSON.stringify(allTodoLists));
-    console.log("After todolists: ", todoLists);
+    // console.log("After todolists: ", todoLists);
     window.location.reload();
   };
 
-  console.log("outside todolists: ", todoLists);
+  // console.log("outside todolists: ", todoLists);
 
   const addTodo = () => {
     const newItem = todoRef.current.value;
