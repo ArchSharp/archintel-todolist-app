@@ -48,6 +48,14 @@
 .add-btn:hover {
   cursor: pointer;
 }
+.each-todo {
+  display: flex;
+  background-color: rgb(11, 11, 69);
+  color: lightgray;
+  padding: 15px 10px;
+  border-bottom: 1px solid gray;
+  position: relative;
+}
 .todo-container {
   width: 500px;
   margin-left: auto;
@@ -74,10 +82,30 @@
   color: lightGray;
   font-size: 20px;
 }
+
+.todo-del-icon {
+  color: red;
+  font-size: 17px;
+  margin-top: auto;
+  margin-bottom: auto;
+  position: absolute;
+  right: 5px;
+  cursor: pointer;
+}
+.todo-content {
+  width: 80%;
+  padding-left: 15px;
+  padding-right: 2px;
+}
 @media only screen and (max-width: 600px) {
   .todo-container {
     width: 90vw;
     font-size: 12px;
+  }
+  .todo-content {
+    width: 80%;
+    padding-left: 5px;
+    padding-right: 2px;
   }
 
   .todo-check-icon,

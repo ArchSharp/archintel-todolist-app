@@ -2,19 +2,13 @@ import React, { useState } from "react";
 
 import { AiFillCheckCircle } from "react-icons/ai";
 import { CgRadioCheck } from "react-icons/cg";
+import { MdDeleteForever } from "react-icons/md";
 
-const ToDoItem = ({ content }) => {
+const ToDoItem = ({ content, index, deleteFn }) => {
   const [check, setCheck] = useState(false);
+
   return (
-    <div
-      style={{
-        display: "flex",
-        backgroundColor: "rgb(11,11,69)",
-        color: "lightgray",
-        padding: "15px 10px",
-        borderBottom: "1px solid gray",
-      }}
-    >
+    <div className="each-todo">
       <span onClick={() => setCheck(!check)} className="checkIcon">
         {check ? (
           <AiFillCheckCircle className="todo-check-icon" />
@@ -23,14 +17,18 @@ const ToDoItem = ({ content }) => {
         )}
       </span>
       <span
+        className="todo-content"
         style={{
-          marginLeft: "15px",
           textDecorationLine: check ? "line-through" : "",
-          textDecorationStyle: check ? "double" : "",
+          // textDecorationStyle: check ? "double" : "",
         }}
       >
         {content}
       </span>
+      <MdDeleteForever
+        className="todo-del-icon"
+        onClick={() => deleteFn(index)}
+      />
     </div>
   );
 };

@@ -8,6 +8,14 @@ const TodoApp = () => {
     JSON.parse(localStorage.getItem("todolists")) || []
   );
 
+  const deleteTodo = (delIndex) => {
+    const allTodoLists = todoLists;
+    allTodoLists.splice(delIndex, 1);
+    localStorage.setItem("todolists", JSON.stringify(allTodoLists));
+    setTodoLists(allTodoLists);
+    // console.log("todolists: ", todoLists, " c: ", allTodoLists);
+  };
+
   const addTodo = () => {
     const newItem = todoRef.current.value;
     const updatedItems = [newItem, ...todoLists];
@@ -15,6 +23,7 @@ const TodoApp = () => {
     localStorage.setItem("todolists", JSON.stringify(updatedItems));
     todoRef.current.value = "";
   };
+
   return (
     <div className="todo-container">
       <h3 style={{ textAlign: "center", fontWeight: "bolder" }}>
@@ -34,7 +43,7 @@ const TodoApp = () => {
         {todoLists.map((content, index) => {
           return (
             <li className="todo-item" key={index}>
-              <ToDoItem content={content} />
+              <ToDoItem content={content} index={index} deleteFn={deleteTodo} />
             </li>
           );
         })}
