@@ -27,7 +27,7 @@ const ToDoItem = ({ content, index, deleteFn }) => {
       </span>
       <MdDeleteForever
         className="todo-del-icon"
-        onClick={() => deleteFn(index)}
+        // onClick={() => deleteFn(index)}
       />
     </div>
   );

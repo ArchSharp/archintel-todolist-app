@@ -8,13 +8,16 @@ const TodoApp = () => {
     JSON.parse(localStorage.getItem("todolists")) || []
   );
 
-  const deleteTodo = (delIndex) => {
+  const _deleteTodo = (delIndex) => {
     const allTodoLists = todoLists;
     allTodoLists.splice(delIndex, 1);
-    localStorage.setItem("todolists", JSON.stringify(allTodoLists));
     setTodoLists(allTodoLists);
-    // console.log("todolists: ", todoLists, " c: ", allTodoLists);
+    localStorage.setItem("todolists", JSON.stringify(allTodoLists));
+    console.log("After todolists: ", todoLists);
+    window.location.reload();
   };
+
+  console.log("outside todolists: ", todoLists);
 
   const addTodo = () => {
     const newItem = todoRef.current.value;
@@ -42,8 +45,16 @@ const TodoApp = () => {
       <ul className="todo-list">
         {todoLists.map((content, index) => {
           return (
-            <li className="todo-item" key={index}>
-              <ToDoItem content={content} index={index} deleteFn={deleteTodo} />
+            <li
+              className="todo-item"
+              key={index}
+              onClick={() => _deleteTodo(index)}
+            >
+              <ToDoItem
+                content={content}
+                index={index}
+                deleteFn={_deleteTodo}
+              />
             </li>
           );
         })}
