@@ -17,9 +17,9 @@ const ToDoItem = ({ content }) => {
     >
       <span onClick={() => setCheck(!check)} className="checkIcon">
         {check ? (
-          <AiFillCheckCircle style={{ color: "lightGray", fontSize: "20px" }} />
+          <AiFillCheckCircle className="todo-check-icon" />
         ) : (
-          <CgRadioCheck style={{ color: "lightgray", fontSize: "20px" }} />
+          <CgRadioCheck className="todo-check-icon" />
         )}
       </span>
       <span

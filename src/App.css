@@ -48,6 +48,52 @@
 .add-btn:hover {
   cursor: pointer;
 }
+.todo-container {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid;
+  font-family: "Montserrat";
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: lightcoral;
+}
+
+.todo-form-input {
+  width: 88%;
+  height: 40px;
+  padding-left: 10px;
+  margin-bottom: 50px;
+  background-color: rgb(11, 11, 69);
+  border-radius: 5px;
+  color: lightgray;
+  font-size: 16px;
+}
+
+.todo-check-icon {
+  color: lightGray;
+  font-size: 20px;
+}
+@media only screen and (max-width: 600px) {
+  .todo-container {
+    width: 90vw;
+    font-size: 12px;
+  }
+
+  .todo-check-icon,
+  h3.span,
+  .todo-form-input {
+    font-size: 15px;
+  }
+
+  .todo-form-input {
+    height: 30px;
+  }
+
+  .add-btn {
+    font-size: 47px;
+  }
+}
 
 @keyframes App-logo-spin {
   from {

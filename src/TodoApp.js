@@ -16,18 +16,7 @@ const TodoApp = () => {
     todoRef.current.value = "";
   };
   return (
-    <div
-      style={{
-        width: "500px",
-        marginLeft: "auto",
-        marginRight: "auto",
-        border: "1px solid",
-        fontFamily: "Montserrat",
-        marginTop: "20px",
-        borderRadius: "5px",
-        backgroundColor: "lightcoral",
-      }}
-    >
+    <div className="todo-container">
       <h3 style={{ textAlign: "center", fontWeight: "bolder" }}>
         <span style={{ color: "navy" }}>ArchIntel </span>
         <span style={{ color: "white" }}>ToDo App</span>
@@ -37,16 +26,7 @@ const TodoApp = () => {
           type="text"
           placeholder="Create a new todo"
           ref={todoRef}
-          style={{
-            width: "88%",
-            height: "40px",
-            paddingLeft: "10px",
-            marginBottom: "50px",
-            backgroundColor: "rgb(11,11,69)",
-            borderRadius: "5px",
-            color: "lightgray",
-            fontSize: "16px",
-          }}
+          className="todo-form-input"
         />
         <AiFillPlusSquare className="add-btn" onClick={addTodo} />
       </div>
