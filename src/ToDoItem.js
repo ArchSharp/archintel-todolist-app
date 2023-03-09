@@ -28,9 +28,9 @@ const ToDoItem = ({ content, index, deleteFn, editFn }) => {
           }}
           onClick={() => setFullText(!fullText)}
         >
-          {fullText
-            ? name.substring(0, name.length)
-            : name.substring(0, 35) + "..."}
+          {!fullText
+            ? name.substring(0, 35) + (name.length > 35 ? "..." : "")
+            : name.substring(0, name.length)}
         </span>
         <MdDeleteForever
           className="todo-del-icon"
