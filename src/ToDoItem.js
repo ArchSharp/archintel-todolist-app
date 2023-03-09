@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 
 import { AiFillCheckCircle } from "react-icons/ai";
 import { CgRadioCheck } from "react-icons/cg";
@@ -8,7 +8,7 @@ import { FaEdit } from "react-icons/fa";
 const ToDoItem = ({ content, index, deleteFn, editFn }) => {
   const { name, date } = content;
   const [check, setCheck] = useState(false);
-  const maxTextLength = useRef(35);
+  const [fullText, setFullText] = useState(false);
 
   return (
     <div className="each-todo-container">
@@ -26,10 +26,11 @@ const ToDoItem = ({ content, index, deleteFn, editFn }) => {
             textDecorationLine: check ? "line-through" : "",
             // textDecorationStyle: check ? "double" : "",
           }}
+          onClick={() => setFullText(!fullText)}
         >
-          {name.length > maxTextLength.current
-            ? name.substring(0, maxTextLength.current) + "..."
-            : name}
+          {fullText
+            ? name.substring(0, name.length)
+            : name.substring(0, 35) + "..."}
         </span>
         <MdDeleteForever
           className="todo-del-icon"
