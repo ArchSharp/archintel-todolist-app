@@ -8,7 +8,7 @@ const TodoApp = () => {
     JSON.parse(localStorage.getItem("todolists")) || []
   );
 
-  const _deleteTodo = (delIndex) => {
+  const deleteTodo = (delIndex) => {
     const allTodoLists = todoLists;
     allTodoLists.splice(delIndex, 1);
     setTodoLists(allTodoLists);
@@ -45,15 +45,11 @@ const TodoApp = () => {
       <ul className="todo-list">
         {todoLists.map((content, index) => {
           return (
-            <li
-              className="todo-item"
-              key={index}
-              onClick={() => _deleteTodo(index)}
-            >
+            <li className="todo-item" key={index}>
               <ToDoItem
                 content={content}
                 index={index}
-                deleteFn={_deleteTodo}
+                deleteFn={deleteTodo}
               />
             </li>
           );
