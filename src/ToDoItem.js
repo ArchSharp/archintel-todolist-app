@@ -5,7 +5,7 @@ import { CgRadioCheck } from "react-icons/cg";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 
-const ToDoItem = ({ content, index, deleteFn }) => {
+const ToDoItem = ({ content, index, deleteFn, editFn }) => {
   const { name, date } = content;
   const [check, setCheck] = useState(false);
   const maxTextLength = useRef(35);
@@ -40,7 +40,7 @@ const ToDoItem = ({ content, index, deleteFn }) => {
         style={{ marginLeft: "20px", marginTop: "10px", position: "relative" }}
       >
         <span style={{ marginLeft: "14px" }}>{date}</span>
-        <FaEdit className="todo-edit-icon" />
+        <FaEdit className="todo-edit-icon" onClick={() => editFn(name)} />
       </div>
     </div>
   );

@@ -3,7 +3,8 @@ import ToDoItem from "./ToDoItem";
 import { AiFillPlusSquare } from "react-icons/ai";
 
 const TodoApp = () => {
-  const todoRef = useRef("");
+  // const todoRef = useRef("");
+  const [todoRef, setTodoRef] = useState("");
   const [todoLists, setTodoLists] = useState(
     JSON.parse(localStorage.getItem("todolists")) || []
   );
@@ -26,14 +27,23 @@ const TodoApp = () => {
   const addTodo = () => {
     const newItem = {
       id: id++,
-      name: todoRef.current.value,
+      name: todoRef,
       date: new Date().toDateString(),
     };
     const updatedItems = [newItem, ...todoLists];
     console.log(updatedItems);
     setTodoLists(updatedItems);
     localStorage.setItem("todolists", JSON.stringify(updatedItems));
-    todoRef.current.value = "";
+    setTodoRef("");
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setTodoRef(e.target.value);
+  };
+
+  const handleEdit = (editItem) => {
+    setTodoRef(editItem);
   };
 
   return (
@@ -46,7 +56,8 @@ const TodoApp = () => {
         <input
           type="text"
           placeholder="Create a new todo"
-          ref={todoRef}
+          value={todoRef}
+          onChange={handleChange}
           className="todo-form-input"
         />
         <AiFillPlusSquare className="add-btn" onClick={addTodo} />
@@ -55,7 +66,7 @@ const TodoApp = () => {
         {todoLists?.map((content, index) => {
           return (
             <li className="todo-item" key={index}>
-              <ToDoItem content={content} index={index} deleteFn={deleteTodo} />
+              <ToDoItem content={content} index={index} deleteFn={deleteTodo} editFn={handleEdit} />
             </li>
           );
         })}
