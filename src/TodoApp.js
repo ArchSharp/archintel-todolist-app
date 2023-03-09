@@ -1,25 +1,18 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import ToDoItem from "./ToDoItem";
 import { AiFillPlusSquare } from "react-icons/ai";
 
 const TodoApp = () => {
-  // const todoRef = useRef("");
   const [todoRef, setTodoRef] = useState("");
   const [todoLists, setTodoLists] = useState(
     JSON.parse(localStorage.getItem("todolists")) || []
   );
   let id = JSON.parse(localStorage.getItem("todolists"))?.length || 0;
-  // var todoLists = useRef(JSON.parse(localStorage.getItem("todolists")) || []);
 
   const deleteTodo = (delIndex) => {
-    //   console.log(delIndex);
     let allTodoLists = todoLists.filter((e, index) => index !== delIndex);
-
-    //   console.log(allTodoLists);
     setTodoLists(allTodoLists);
     localStorage.setItem("todolists", JSON.stringify(allTodoLists));
-    //   console.log("After todolists: ", todoLists);
-    // window.location.reload();
   };
 
   // console.log("outside todolists: ", todoLists.current);
@@ -66,7 +59,12 @@ const TodoApp = () => {
         {todoLists?.map((content, index) => {
           return (
             <li className="todo-item" key={index}>
-              <ToDoItem content={content} index={index} deleteFn={deleteTodo} editFn={handleEdit} />
+              <ToDoItem
+                content={content}
+                index={index}
+                deleteFn={deleteTodo}
+                editFn={handleEdit}
+              />
             </li>
           );
         })}
