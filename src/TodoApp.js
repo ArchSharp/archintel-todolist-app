@@ -24,7 +24,11 @@ const TodoApp = () => {
   // console.log("outside todolists: ", todoLists.current);
 
   const addTodo = () => {
-    const newItem = { id: id++, name: todoRef.current.value };
+    const newItem = {
+      id: id++,
+      name: todoRef.current.value,
+      date: new Date().toDateString(),
+    };
     const updatedItems = [newItem, ...todoLists];
     console.log(updatedItems);
     setTodoLists(updatedItems);

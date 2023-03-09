@@ -48,12 +48,16 @@
 .add-btn:hover {
   cursor: pointer;
 }
+
+.each-todo-container {
+  background-color: rgb(11, 11, 69);
+  border-bottom: 1px solid gray;
+  color: lightgray;
+  font-family: "Montserrat";
+  padding: 15px 10px 10px 10px;
+}
 .each-todo {
   display: flex;
-  background-color: rgb(11, 11, 69);
-  color: lightgray;
-  padding: 15px 10px;
-  border-bottom: 1px solid gray;
   position: relative;
 }
 .todo-container {
@@ -61,7 +65,6 @@
   margin-left: auto;
   margin-right: auto;
   border: 1px solid;
-  font-family: "Montserrat";
   margin-top: 20px;
   border-radius: 5px;
   background-color: lightcoral;
@@ -85,7 +88,7 @@
 
 .todo-del-icon {
   color: red;
-  font-size: 17px;
+  font-size: 25px;
   margin-top: auto;
   margin-bottom: auto;
   position: absolute;
