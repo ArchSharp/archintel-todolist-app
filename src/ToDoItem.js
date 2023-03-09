@@ -3,6 +3,7 @@ import React, { useRef, useState } from "react";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { CgRadioCheck } from "react-icons/cg";
 import { MdDeleteForever } from "react-icons/md";
+import { FaEdit } from "react-icons/fa";
 
 const ToDoItem = ({ content, index, deleteFn }) => {
   const { name, date } = content;
@@ -35,8 +36,12 @@ const ToDoItem = ({ content, index, deleteFn }) => {
           onClick={() => deleteFn(index)}
         />
       </div>
-      {/* <br /> */}
-      <span style={{ marginLeft: "20px", marginTop: "10px" }}>{date}</span>
+      <div
+        style={{ marginLeft: "20px", marginTop: "10px", position: "relative" }}
+      >
+        <span style={{ marginLeft: "14px" }}>{date}</span>
+        <FaEdit className="todo-edit-icon" />
+      </div>
     </div>
   );
 };

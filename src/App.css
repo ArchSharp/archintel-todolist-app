@@ -89,12 +89,22 @@
 .todo-del-icon {
   color: red;
   font-size: 25px;
-  margin-top: auto;
-  margin-bottom: auto;
+  /* margin-top: auto;
+  margin-bottom: auto; */
   position: absolute;
   right: 5px;
+  top: -10px;
   cursor: pointer;
 }
+
+.todo-edit-icon {
+  position: absolute;
+  font-size: 18px;
+  right: 7px;
+  bottom: 0px;
+  cursor: pointer;
+}
+
 .todo-content {
   width: 80%;
   padding-left: 15px;
