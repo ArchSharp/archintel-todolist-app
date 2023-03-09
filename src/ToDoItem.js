@@ -23,7 +23,7 @@ const ToDoItem = ({ content, index, deleteFn }) => {
           // textDecorationStyle: check ? "double" : "",
         }}
       >
-        {content}
+        {content.name}
       </span>
       <MdDeleteForever
         className="todo-del-icon"

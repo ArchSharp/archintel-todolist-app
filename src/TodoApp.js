@@ -7,21 +7,26 @@ const TodoApp = () => {
   const [todoLists, setTodoLists] = useState(
     JSON.parse(localStorage.getItem("todolists")) || []
   );
+  let id = JSON.parse(localStorage.getItem("todolists"))?.length || 0;
+  // var todoLists = useRef(JSON.parse(localStorage.getItem("todolists")) || []);
 
   const deleteTodo = (delIndex) => {
-    const allTodoLists = todoLists;
-    allTodoLists.splice(delIndex, 1);
+    //   console.log(delIndex);
+    let allTodoLists = todoLists.filter((e, index) => index !== delIndex);
+
+    //   console.log(allTodoLists);
     setTodoLists(allTodoLists);
     localStorage.setItem("todolists", JSON.stringify(allTodoLists));
-    // console.log("After todolists: ", todoLists);
-    window.location.reload();
+    //   console.log("After todolists: ", todoLists);
+    // window.location.reload();
   };
 
-  // console.log("outside todolists: ", todoLists);
+  // console.log("outside todolists: ", todoLists.current);
 
   const addTodo = () => {
-    const newItem = todoRef.current.value;
+    const newItem = { id: id++, name: todoRef.current.value };
     const updatedItems = [newItem, ...todoLists];
+    console.log(updatedItems);
     setTodoLists(updatedItems);
     localStorage.setItem("todolists", JSON.stringify(updatedItems));
     todoRef.current.value = "";
@@ -43,7 +48,7 @@ const TodoApp = () => {
         <AiFillPlusSquare className="add-btn" onClick={addTodo} />
       </div>
       <ul className="todo-list">
-        {todoLists.map((content, index) => {
+        {todoLists?.map((content, index) => {
           return (
             <li className="todo-item" key={index}>
               <ToDoItem content={content} index={index} deleteFn={deleteTodo} />
