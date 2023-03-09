@@ -1,37 +1,28 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import ToDoItem from "./ToDoItem";
 import { AiFillPlusSquare } from "react-icons/ai";
 
 const TodoApp = () => {
   const todoRef = useRef("");
-  // const [todoLists, setTodoLists] = useState(
-  //   JSON.parse(localStorage.getItem("todolists")) || []
-  // );
-
-  var todoLists = useRef(JSON.parse(localStorage.getItem("todolists")) || []);
-
-  var allTodoLists = useRef([]);
+  const [todoLists, setTodoLists] = useState(
+    JSON.parse(localStorage.getItem("todolists")) || []
+  );
 
   const deleteTodo = (delIndex) => {
-    allTodoLists.current = todoLists.current;
-    allTodoLists.current.splice(delIndex, 1);
-    // setTodoLists(allTodoLists.current);
-    localStorage.setItem("todolists", JSON.stringify(allTodoLists.current));
-    console.log("After todolists: ", todoLists.current);
-    // window.location.reload();
+    const allTodoLists = todoLists;
+    allTodoLists.splice(delIndex, 1);
+    setTodoLists(allTodoLists);
+    localStorage.setItem("todolists", JSON.stringify(allTodoLists));
+    // console.log("After todolists: ", todoLists);
+    window.location.reload();
   };
 
-  useEffect(() => {
-    console.log("useEffect todolists: ", todoLists.current);
-    // setTodoLists(JSON.parse(localStorage.getItem("todolists")));
-  }, [allTodoLists.current]);
-
-  console.log("outside todolists: ", todoLists.current);
+  // console.log("outside todolists: ", todoLists);
 
   const addTodo = () => {
     const newItem = todoRef.current.value;
-    const updatedItems = [newItem, ...todoLists.current];
-    // setTodoLists(updatedItems);
+    const updatedItems = [newItem, ...todoLists];
+    setTodoLists(updatedItems);
     localStorage.setItem("todolists", JSON.stringify(updatedItems));
     todoRef.current.value = "";
   };
@@ -52,7 +43,7 @@ const TodoApp = () => {
         <AiFillPlusSquare className="add-btn" onClick={addTodo} />
       </div>
       <ul className="todo-list">
-        {todoLists.current.map((content, index) => {
+        {todoLists.map((content, index) => {
           return (
             <li className="todo-item" key={index}>
               <ToDoItem content={content} index={index} deleteFn={deleteTodo} />
