@@ -33,10 +33,10 @@ const TodoApp = () => {
   const addTodo = () => {
     
     const newItem = {
-      id: editItem ? editItem.id : id++,
+      id: editItem.length > 0 ? editItem.id : id++,
       name: todoRef,
-      isCompleted: editItem ? editItem.isCompleted : false,
-      date: editItem ? editItem.date : new Date().toDateString(),
+      isCompleted: editItem.length > 0 ? editItem.isCompleted : false,
+      date: editItem.length > 0 ? editItem.date : new Date().toDateString(),
     };
     const updatedItems = [...todoLists, newItem];
     console.log(updatedItems);
