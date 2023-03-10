@@ -9,6 +9,16 @@ const TodoApp = () => {
   );
   let id = JSON.parse(localStorage.getItem("todolists"))?.length || 0;
 
+  const isCompletedTodo = (check, cIndex) => {
+    let allTodoLists = todoLists.filter((e, index) => index === cIndex)[0];
+    let delAllTodoLists = todoLists.filter((e, index) => index !== cIndex);
+
+    allTodoLists = { ...allTodoLists, isCompleted: check };
+    allTodoLists = [...delAllTodoLists, allTodoLists];
+    setTodoLists(allTodoLists);
+    localStorage.setItem("todolists", JSON.stringify(allTodoLists));
+  };
+
   const deleteTodo = (delIndex) => {
     let allTodoLists = todoLists.filter((e, index) => index !== delIndex);
     setTodoLists(allTodoLists);
@@ -21,6 +31,7 @@ const TodoApp = () => {
     const newItem = {
       id: id++,
       name: todoRef,
+      isCompleted: false,
       date: new Date().toDateString(),
     };
     const updatedItems = [newItem, ...todoLists];
@@ -64,6 +75,7 @@ const TodoApp = () => {
                 index={index}
                 deleteFn={deleteTodo}
                 editFn={handleEdit}
+                isCompletedFn={isCompletedTodo}
               />
             </li>
           );

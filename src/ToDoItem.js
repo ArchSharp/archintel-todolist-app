@@ -5,15 +5,23 @@ import { CgRadioCheck } from "react-icons/cg";
 import { MdDeleteForever } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 
-const ToDoItem = ({ content, index, deleteFn, editFn }) => {
-  const { name, date } = content;
-  const [check, setCheck] = useState(false);
+const ToDoItem = ({ content, index, deleteFn, editFn, isCompletedFn }) => {
+  const { name, isCompleted, date } = content;
+  const [check, setCheck] = useState(isCompleted);
   const [fullText, setFullText] = useState(false);
+
+  const handleIsComplete = () => {
+    setCheck(!check);
+    isCompletedFn(!check, index);
+  };
 
   return (
     <div className="each-todo-container">
       <div className="each-todo">
-        <span onClick={() => setCheck(!check)} className="checkIcon">
+        <span
+          onClick={handleIsComplete}
+          className="checkIcon"
+        >
           {check ? (
             <AiFillCheckCircle className="todo-check-icon" />
           ) : (
