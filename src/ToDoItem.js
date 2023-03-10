@@ -44,7 +44,7 @@ const ToDoItem = ({ content, index, deleteFn, editFn, isCompletedFn }) => {
         style={{ marginLeft: "20px", marginTop: "10px", position: "relative" }}
       >
         <div className="todo-date">{date}</div>
-        <FaEdit className="todo-edit-icon" onClick={() => editFn(name)} />
+        <FaEdit className="todo-edit-icon" onClick={() => editFn(index)} />
       </div>
     </div>
   );

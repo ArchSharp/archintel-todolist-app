@@ -7,6 +7,7 @@ const TodoApp = () => {
   const [todoLists, setTodoLists] = useState(
     JSON.parse(localStorage.getItem("todolists")) || []
   );
+  const [editItem, setEditItem] = useState({})
   let id = JSON.parse(localStorage.getItem("todolists"))?.length || 0;
 
   // console.log(todoLists);
@@ -19,6 +20,7 @@ const TodoApp = () => {
     setTodoLists(allTodoLists);
     localStorage.setItem("todolists", JSON.stringify(allTodoLists));
   };
+  
 
   const deleteTodo = (delIndex) => {
     let allTodoLists = todoLists.filter((e, index) => index !== delIndex);
@@ -29,12 +31,12 @@ const TodoApp = () => {
   // console.log("outside todolists: ", todoLists.current);
 
   const addTodo = () => {
-    console.log("outside todolists: ", id);
+    
     const newItem = {
-      id: id++,
+      id: editItem ? editItem.id : id++,
       name: todoRef,
-      isCompleted: false,
-      date: new Date().toDateString(),
+      isCompleted: editItem ? editItem.isCompleted : false,
+      date: editItem ? editItem.date : new Date().toDateString(),
     };
     const updatedItems = [...todoLists, newItem];
     console.log(updatedItems);
@@ -48,8 +50,15 @@ const TodoApp = () => {
     setTodoRef(e.target.value);
   };
 
-  const handleEdit = (editItem) => {
-    setTodoRef(editItem);
+  const handleEdit = (editItemIndex) => {
+    let allTodoLists = todoLists.filter(
+      (e, index) => index === editItemIndex
+    )[0];
+    setTodoRef(allTodoLists.name);
+    setEditItem(allTodoLists);
+    let delAllTodoLists = todoLists.filter((e, index) => index !== editItemIndex);
+    setTodoLists(delAllTodoLists);
+    localStorage.setItem("todolists", JSON.stringify(delAllTodoLists));
   };
 
   return (
