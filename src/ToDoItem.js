@@ -7,22 +7,17 @@ import { FaEdit } from "react-icons/fa";
 
 const ToDoItem = ({ content, index, deleteFn, editFn, isCompletedFn }) => {
   const { name, isCompleted, date } = content;
-  const [check, setCheck] = useState(isCompleted);
   const [fullText, setFullText] = useState(false);
 
   const handleIsComplete = () => {
-    setCheck(!check);
-    isCompletedFn(!check, index);
+    isCompletedFn(!Boolean(isCompleted), index);
   };
 
   return (
     <div className="each-todo-container">
       <div className="each-todo">
-        <span
-          onClick={handleIsComplete}
-          className="checkIcon"
-        >
-          {check ? (
+        <span onClick={handleIsComplete} className="checkIcon">
+          {Boolean(isCompleted) ? (
             <AiFillCheckCircle className="todo-check-icon" />
           ) : (
             <CgRadioCheck className="todo-check-icon" />
@@ -31,7 +26,7 @@ const ToDoItem = ({ content, index, deleteFn, editFn, isCompletedFn }) => {
         <span
           className="todo-content"
           style={{
-            textDecorationLine: check ? "line-through" : "",
+            textDecorationLine: Boolean(isCompleted) ? "line-through" : "",
             // textDecorationStyle: check ? "double" : "",
           }}
           onClick={() => setFullText(!fullText)}

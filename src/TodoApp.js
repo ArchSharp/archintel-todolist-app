@@ -73,6 +73,9 @@ const TodoApp = () => {
           ?.sort((a, b) => {
             return b.id - a.id;
           })
+          .sort((a, b) => {
+            return a.isCompleted - b.isCompleted;
+          })
           .map((content, index) => {
             return (
               <li className="todo-item" key={index}>
