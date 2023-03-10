@@ -9,12 +9,13 @@ const TodoApp = () => {
   );
   let id = JSON.parse(localStorage.getItem("todolists"))?.length || 0;
 
+  // console.log(todoLists);
   const isCompletedTodo = (check, cIndex) => {
     let allTodoLists = todoLists.filter((e, index) => index === cIndex)[0];
     let delAllTodoLists = todoLists.filter((e, index) => index !== cIndex);
 
     allTodoLists = { ...allTodoLists, isCompleted: check };
-    allTodoLists = [...delAllTodoLists, allTodoLists];
+    allTodoLists = [allTodoLists, ...delAllTodoLists];
     setTodoLists(allTodoLists);
     localStorage.setItem("todolists", JSON.stringify(allTodoLists));
   };
@@ -28,13 +29,14 @@ const TodoApp = () => {
   // console.log("outside todolists: ", todoLists.current);
 
   const addTodo = () => {
+    console.log("outside todolists: ", id);
     const newItem = {
       id: id++,
       name: todoRef,
       isCompleted: false,
       date: new Date().toDateString(),
     };
-    const updatedItems = [newItem, ...todoLists];
+    const updatedItems = [...todoLists, newItem];
     console.log(updatedItems);
     setTodoLists(updatedItems);
     localStorage.setItem("todolists", JSON.stringify(updatedItems));
@@ -67,19 +69,23 @@ const TodoApp = () => {
         <AiFillPlusSquare className="add-btn" onClick={addTodo} />
       </div>
       <ul className="todo-list">
-        {todoLists?.map((content, index) => {
-          return (
-            <li className="todo-item" key={index}>
-              <ToDoItem
-                content={content}
-                index={index}
-                deleteFn={deleteTodo}
-                editFn={handleEdit}
-                isCompletedFn={isCompletedTodo}
-              />
-            </li>
-          );
-        })}
+        {todoLists
+          ?.sort((a, b) => {
+            return b.id - a.id;
+          })
+          .map((content, index) => {
+            return (
+              <li className="todo-item" key={index}>
+                <ToDoItem
+                  content={content}
+                  index={index}
+                  deleteFn={deleteTodo}
+                  editFn={handleEdit}
+                  isCompletedFn={isCompletedTodo}
+                />
+              </li>
+            );
+          })}
       </ul>
     </div>
   );
