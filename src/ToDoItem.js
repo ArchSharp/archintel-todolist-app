@@ -45,9 +45,9 @@ const ToDoItem = ({ content, index, deleteFn, editFn, isCompletedFn }) => {
       >
         <div className="todo-date" style={{ display: "flex" }}>
           <MdOutlineCalendarMonth style={{ marginTop: "2px" }} />
-          <span
-            style={{ marginLeft: "10px" }}
-          >{`${date.toDateString()} ${date.toLocaleTimeString()}`}</span>
+          <span style={{ marginLeft: "10px" }}>{`${new Date(
+            date
+          ).toDateString()} ${new Date(date).toLocaleTimeString()}`}</span>
         </div>
         <FaEdit className="todo-edit-icon" onClick={() => editFn(index)} />
       </div>

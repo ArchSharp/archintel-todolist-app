@@ -57,6 +57,7 @@ const TodoApp = () => {
       (e, index) => index === editItemIndex
     )[0];
     setTodoRef(allTodoLists.name);
+    setTodoDateRef(allTodoLists.date);
     setEditItem(allTodoLists);
     let delAllTodoLists = todoLists.filter(
       (e, index) => index !== editItemIndex
