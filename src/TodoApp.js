@@ -31,7 +31,7 @@ const TodoApp = () => {
 
   const addTodo = (e) => {
     e.preventDefault();
-    if (todoRef !== "") {
+    if (todoRef !== "" && todoDateRef !== "") {
       console.log("date: ", todoDateRef);
       const newItem = {
         id: editItem.length > 0 ? editItem.id : id++,
@@ -117,15 +117,7 @@ const TodoApp = () => {
             );
           })}
       </ul>
-      <BsArrowDownCircleFill
-        style={{
-          color: "lightcoral",
-          position: "absolute",
-          bottom: "15px",
-          right: "37px",
-          fontSize: "35px",
-        }}
-      />
+      <BsArrowDownCircleFill className="down-arrow" />
     </div>
   );
 };
