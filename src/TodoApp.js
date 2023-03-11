@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import ToDoItem from "./ToDoItem";
 import { AiFillPlusSquare } from "react-icons/ai";
+import { BsArrowDownCircleFill } from "react-icons/bs";
 
 const TodoApp = () => {
   const [todoRef, setTodoRef] = useState("");
+  const [todoDateRef, setTodoDateRef] = useState("");
   const [todoLists, setTodoLists] = useState(
     JSON.parse(localStorage.getItem("todolists")) || []
   );
-  const [editItem, setEditItem] = useState({})
+  const [editItem, setEditItem] = useState({});
   let id = JSON.parse(localStorage.getItem("todolists"))?.length || 0;
 
   // console.log(todoLists);
@@ -20,7 +22,6 @@ const TodoApp = () => {
     setTodoLists(allTodoLists);
     localStorage.setItem("todolists", JSON.stringify(allTodoLists));
   };
-  
 
   const deleteTodo = (delIndex) => {
     let allTodoLists = todoLists.filter((e, index) => index !== delIndex);
@@ -31,7 +32,6 @@ const TodoApp = () => {
   // console.log("outside todolists: ", todoLists.current);
 
   const addTodo = () => {
-    
     const newItem = {
       id: editItem.length > 0 ? editItem.id : id++,
       name: todoRef,
@@ -56,26 +56,41 @@ const TodoApp = () => {
     )[0];
     setTodoRef(allTodoLists.name);
     setEditItem(allTodoLists);
-    let delAllTodoLists = todoLists.filter((e, index) => index !== editItemIndex);
+    let delAllTodoLists = todoLists.filter(
+      (e, index) => index !== editItemIndex
+    );
     setTodoLists(delAllTodoLists);
     localStorage.setItem("todolists", JSON.stringify(delAllTodoLists));
   };
 
+  console.log("date: ", todoDateRef);
+
   return (
-    <div className="todo-container">
-      <h3 style={{ textAlign: "center", fontWeight: "bolder" }}>
-        <span style={{ color: "navy" }}>ArchIntel </span>
-        <span style={{ color: "white" }}>ToDo App</span>
-      </h3>
-      <div style={{ display: "flex" }}>
-        <input
-          type="text"
-          placeholder="Create a new todo"
-          value={todoRef}
-          onChange={handleChange}
-          className="todo-form-input"
-        />
-        <AiFillPlusSquare className="add-btn" onClick={addTodo} />
+    <div className="todo-container" style={{ position: "relative" }}>
+      <div className="todo-head">
+        <h3 style={{ textAlign: "center", fontWeight: "bolder" }}>
+          <span style={{ color: "navy" }}>ArchIntel </span>
+          <span style={{ color: "white" }}>ToDo App</span>
+        </h3>
+        <div style={{ display: "flex" }}>
+          <input
+            type="text"
+            placeholder="Create a new todo"
+            value={todoRef}
+            onChange={handleChange}
+            className="todo-form-input"
+          />
+          <AiFillPlusSquare className="add-btn" onClick={addTodo} />
+        </div>
+        <div style={{ display: "flex" }}>
+          <input
+            type="datetime-local"
+            id="date-time"
+            name="date-time"
+            value={todoDateRef}
+            onChange={(e) => setTodoDateRef(e.target.value)}
+          />
+        </div>
       </div>
       <ul className="todo-list">
         {todoLists
@@ -99,6 +114,15 @@ const TodoApp = () => {
             );
           })}
       </ul>
+      <BsArrowDownCircleFill
+        style={{
+          color: "lightcoral",
+          position: "absolute",
+          bottom: "15px",
+          right: "37px",
+          fontSize: "35px",
+        }}
+      />
     </div>
   );
 };

@@ -1,3 +1,22 @@
+body {
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  height: 0px; /* height of horizontal scrollbar ← You're missing this */
+  width: 0px; /* width of vertical scrollbar */
+  border: 1px solid #d5d5d5;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #b32525;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background: #b0b0b0;
+}
+
 .App {
   text-align: center;
 }
@@ -32,6 +51,8 @@
   cursor: pointer;
 }
 .todo-list {
+  overflow-y: auto;
+  height: 381px;
   padding: 0px;
   margin: 0px;
   list-style: none;
@@ -41,8 +62,9 @@
   padding: 0px;
 }
 .add-btn {
+  position: relative;
+  top: 20px;
   font-size: 57px;
-  margin-top: -6px;
   color: rgb(11, 11, 69);
 }
 .add-btn:hover {
@@ -60,11 +82,15 @@
   display: flex;
   position: relative;
 }
+.todo-head {
+  height: 200px;
+}
 .todo-container {
+  height: 600px;
   width: 500px;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid;
+  border: 1px solid red;
   margin-top: 20px;
   border-radius: 5px;
   background-color: lightcoral;
@@ -75,13 +101,33 @@
   height: 40px;
   margin-left: 2%;
   padding-left: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   background-color: rgb(11, 11, 69);
   border-radius: 5px;
   color: lightgray;
   font-size: 16px;
 }
 
+input[type="datetime-local"] {
+  /* Style the border */
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 82%;
+  margin-left: 2%;
+  height: 30px;
+  /* margin-bottom: 10px; */
+
+  /* Style the font */
+  /* font-family: Arial, sans-serif; */
+  font-family: "Montserrat";
+  font-size: 16px;
+
+  background-color: rgb(11, 11, 69);
+  color: lightgray;
+
+  /* Style the padding */
+  padding: 5px 10px;
+}
 .todo-check-icon {
   color: lightGray;
   font-size: 20px;
@@ -139,7 +185,12 @@
   .todo-form-input {
     height: 30px;
   }
-
+  input[type="datetime-local"] {
+    /* Style the border */
+    width: 78%;
+    height: 25px;
+    font-size: 13px;
+  }
   .add-btn {
     font-size: 47px;
   }
