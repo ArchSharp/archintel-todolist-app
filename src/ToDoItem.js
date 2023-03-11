@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { AiFillCheckCircle } from "react-icons/ai";
 import { CgRadioCheck } from "react-icons/cg";
-import { MdDeleteForever } from "react-icons/md";
+import { MdDeleteForever, MdOutlineCalendarMonth } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 
 const ToDoItem = ({ content, index, deleteFn, editFn, isCompletedFn }) => {
@@ -43,7 +43,12 @@ const ToDoItem = ({ content, index, deleteFn, editFn, isCompletedFn }) => {
       <div
         style={{ marginLeft: "20px", marginTop: "10px", position: "relative" }}
       >
-        <div className="todo-date">{date}</div>
+        <div className="todo-date" style={{ display: "flex" }}>
+          <MdOutlineCalendarMonth style={{ marginTop: "2px" }} />
+          <span
+            style={{ marginLeft: "10px" }}
+          >{`${date.toDateString()} ${date.toLocaleTimeString()}`}</span>
+        </div>
         <FaEdit className="todo-edit-icon" onClick={() => editFn(index)} />
       </div>
     </div>

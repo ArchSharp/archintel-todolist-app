@@ -29,20 +29,22 @@ const TodoApp = () => {
     localStorage.setItem("todolists", JSON.stringify(allTodoLists));
   };
 
-  // console.log("outside todolists: ", todoLists.current);
-
-  const addTodo = () => {
-    const newItem = {
-      id: editItem.length > 0 ? editItem.id : id++,
-      name: todoRef,
-      isCompleted: editItem.length > 0 ? editItem.isCompleted : false,
-      date: editItem.length > 0 ? editItem.date : new Date().toDateString(),
-    };
-    const updatedItems = [...todoLists, newItem];
-    console.log(updatedItems);
-    setTodoLists(updatedItems);
-    localStorage.setItem("todolists", JSON.stringify(updatedItems));
-    setTodoRef("");
+  const addTodo = (e) => {
+    e.preventDefault();
+    if (todoRef !== "") {
+      console.log("date: ", todoDateRef);
+      const newItem = {
+        id: editItem.length > 0 ? editItem.id : id++,
+        name: todoRef,
+        isCompleted: editItem.length > 0 ? editItem.isCompleted : false,
+        date: editItem.length > 0 ? editItem.date : new Date(todoDateRef), //.toDateString(),
+      };
+      const updatedItems = [...todoLists, newItem];
+      console.log(updatedItems);
+      setTodoLists(updatedItems);
+      localStorage.setItem("todolists", JSON.stringify(updatedItems));
+      setTodoRef("");
+    }
   };
 
   const handleChange = (e) => {
