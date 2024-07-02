@@ -6,7 +6,7 @@ import { MdDeleteForever, MdOutlineCalendarMonth } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 
 const ToDoItem = ({ content, index, deleteFn, editFn, isCompletedFn }) => {
-  const { name, isCompleted, date } = content;
+  const { todo, isCompleted, date } = content;
   const [fullText, setFullText] = useState(false);
 
   const handleIsComplete = () => {
@@ -32,8 +32,8 @@ const ToDoItem = ({ content, index, deleteFn, editFn, isCompletedFn }) => {
           onClick={() => setFullText(!fullText)}
         >
           {!fullText
-            ? name.substring(0, 35) + (name.length > 35 ? "..." : "")
-            : name.substring(0, name.length)}
+            ? todo.substring(0, 35) + (todo.length > 35 ? "..." : "")
+            : todo.substring(0, todo.length)}
         </span>
         <MdDeleteForever
           className="todo-del-icon"
