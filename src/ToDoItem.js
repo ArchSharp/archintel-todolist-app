@@ -29,11 +29,16 @@ const ToDoItem = ({ content, index, deleteFn, editFn, isCompletedFn }) => {
             textDecorationLine: Boolean(isCompleted) ? "line-through" : "",
             // textDecorationStyle: check ? "double" : "",
           }}
-          onClick={() => setFullText(!fullText)}
         >
-          {!fullText
-            ? todo.substring(0, 35) + (todo.length > 35 ? "..." : "")
-            : todo.substring(0, todo.length)}
+          {!fullText ? todo.substring(0, 35) : todo.substring(0, todo.length)}
+          {"..."}
+          <span
+            href="#"
+            style={{ color: "navy", fontWeight: "bolder", cursor: "pointer" }}
+            onClick={() => setFullText(!fullText)}
+          >
+            {!fullText ? "more" : "less"}
+          </span>
         </span>
         <MdDeleteForever
           className="todo-del-icon"

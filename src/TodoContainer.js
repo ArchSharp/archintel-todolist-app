@@ -29,7 +29,7 @@ export const TodoContainer = ({
           style={{
             // color: "white",
             fontSize: "20px",
-            padding: "10px 0px 10px 7px",
+            padding: "5px 0px 5px 7px",
           }}
         >
           {group.todogroupname}
