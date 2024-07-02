@@ -85,7 +85,7 @@ body {
   height: fit-content;
 }
 .todo-container {
-  height: 700px;
+  height: 80vh;
   width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -215,6 +215,7 @@ input[type="datetime-local"] {
 
   .todo-container {
     width: 90vw;
+    height: 95vh;
     font-size: 12px;
   }
   .todo-content {
