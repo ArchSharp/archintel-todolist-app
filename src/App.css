@@ -214,8 +214,8 @@ input[type="datetime-local"] {
   }
 
   .todo-container {
-    width: 90vw;
-    height: 90vh;
+    width: 95vw;
+    height: 85vh;
     font-size: 12px;
   }
   .todo-content {
