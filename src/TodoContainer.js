@@ -35,28 +35,15 @@ export const TodoContainer = ({
           {group.todogroupname}
         </h4>
         <AiFillPlusSquare
-          style={{
-            color: "white",
-            margin: "0px 10px 0px auto",
-            fontSize: "30px",
-          }}
+          className="add2-btn"
           onClick={() => modifyTodoGroup(group.todogroupname)}
         />
         <MdDeleteForever
-          //   className="todo-del-icon"
-          style={{
-            color: "red",
-            margin: "0px 10px 0px 5px",
-            fontSize: "30px",
-          }}
+          className="delete-btn"
           //   onClick={() => deleteFn(index)}
         />
         <IoIosArrowForward
-          style={{
-            color: "white",
-            margin: "0px 10px 0px 5px",
-            fontSize: "30px",
-          }}
+          className="collapse-todo"
           onClick={() => setShowTodos(!showTodos)}
         />
       </div>

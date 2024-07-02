@@ -70,6 +70,27 @@ body {
   cursor: pointer;
 }
 
+.add2-btn {
+  font-size: 30px;
+  color: white;
+  border-radius: 5px;
+  margin: 0px 10px 0px auto;
+}
+
+.delete-btn {
+  font-size: 30px;
+  color: red;
+  border-radius: 5px;
+  margin: 0px 5px;
+}
+
+.collapse-todo {
+  font-size: 30px;
+  color: white;
+  border-radius: 5px;
+  margin: 0px 5px;
+}
+
 .each-todo-container {
   /* background-color: rgb(45, 45, 147); */
   border-bottom: 1px solid gray;
@@ -86,7 +107,7 @@ body {
 }
 .todo-container {
   height: 80vh;
-  width: 600px;
+  width: 550px;
   margin-left: auto;
   margin-right: auto;
   border: 1px solid red;
@@ -241,5 +262,19 @@ input[type="datetime-local"] {
   }
   .add-btn {
     font-size: 12px;
+  }
+
+  .add2-btn {
+    font-size: 18px;
+  }
+
+  .delete-btn {
+    font-size: 18px;
+    margin: 0px 5px;
+  }
+
+  .collapse-todo {
+    font-size: 18px;
+    margin: 0px 5px;
   }
 }
