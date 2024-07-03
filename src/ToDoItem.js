@@ -31,7 +31,7 @@ const ToDoItem = ({ content, index, deleteFn, editFn, isCompletedFn }) => {
           }}
         >
           {!fullText ? todo.substring(0, 35) : todo.substring(0, todo.length)}
-          {"..."}
+          {!fullText ? "..." : ". "}
           <span
             href="#"
             style={{ color: "navy", fontWeight: "bolder", cursor: "pointer" }}
