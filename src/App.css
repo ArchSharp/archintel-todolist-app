@@ -82,6 +82,12 @@ body {
   margin: 0px 5px;
 }
 
+.edit-group-btn {
+  font-size: 25px;
+  color: white;
+  margin: 0px 5px;
+}
+
 .collapse-todo {
   font-size: 30px;
   color: white;
@@ -185,6 +191,14 @@ input[type="datetime-local"] {
   cursor: pointer;
 }
 
+.todogroup-edit-icon {
+  position: absolute;
+  font-size: 18px;
+  right: 7px;
+  bottom: 0px;
+  cursor: pointer;
+}
+
 .todo-content {
   width: 80%;
   padding-left: 15px;
@@ -269,7 +283,21 @@ input[type="datetime-local"] {
     font-size: 18px;
   }
 
+  .edit-group-btn {
+    font-size: 14px;
+  }
+
   .collapse-todo {
     font-size: 18px;
   }
+}
+
+.open-user-arrow {
+  transform: rotate(90deg);
+  transition: transform 300ms ease-in;
+}
+
+.close-user-arrow {
+  transform: rotate(0deg);
+  transition: transform 300ms ease-in;
 }

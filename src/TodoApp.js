@@ -91,6 +91,18 @@ const TodoApp = () => {
     localStorage.setItem("todolists", JSON.stringify(updatedTodoLists));
   };
 
+  const handleEditGroupTitle = (groupIndex, newTitle) => {
+    let updatedTodoLists = [...todoLists];
+    // Update the group name at the specified index
+    updatedTodoLists[groupIndex].todogroupname = newTitle;
+
+    // Update the state with the new todoLists
+    setTodoLists(updatedTodoLists);
+
+    // Save the updated todoLists to localStorage
+    localStorage.setItem("todolists", JSON.stringify(updatedTodoLists));
+  };
+
   // console.log("first: ", todoGroup);
 
   const modifyTodoGroup = (todoGroup) => {
@@ -183,6 +195,7 @@ const TodoApp = () => {
             group={group}
             deleteTodo={deleteTodo}
             handleEdit={handleEdit}
+            handleEditGroupTitle={handleEditGroupTitle}
             isCompletedTodo={isCompletedTodo}
             modifyTodoGroup={modifyTodoGroup}
           />
