@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ToDoItem from "./ToDoItem";
 import { AiFillPlusSquare } from "react-icons/ai";
 import { IoIosArrowForward } from "react-icons/io";
@@ -14,12 +14,12 @@ export const TodoContainer = ({
   isCompletedTodo,
   modifyTodoGroup,
 }) => {
-  const [todoLists, setTodoLists] = useState(
-    JSON.parse(localStorage.getItem("todolists")) || []
-  );
+  const todoLists = useRef(JSON.parse(localStorage.getItem("todolists")) || []);
   const [showTodos, setShowTodos] = useState(false);
   const [isEditGroup, setIsEditGroup] = useState(false);
-  const [newTitle, setNewTitle] = useState(todoLists[groupIndex].todogroupname);
+  const [newTitle, setNewTitle] = useState(
+    todoLists.current[groupIndex].todogroupname
+  );
 
   console.log("group.todogroupname: ", newTitle);
 
