@@ -18,6 +18,8 @@ export const TodoContainer = ({
   const [isEditGroup, setIsEditGroup] = useState(false);
   const [newTitle, setNewTitle] = useState(group.todogroupname);
 
+  console.log("group.todogroupname: ", group.todogroupname);
+
   return (
     <div className="todo-list-container" key={groupIndex}>
       <div
@@ -78,7 +80,6 @@ export const TodoContainer = ({
             className="edit-group-btn"
             onClick={() => {
               handleEditGroupTitle(groupIndex, newTitle);
-              setNewTitle("");
               setIsEditGroup(!isEditGroup);
             }}
             style={{ marginLeft: `${isEditGroup && "auto"}` }}

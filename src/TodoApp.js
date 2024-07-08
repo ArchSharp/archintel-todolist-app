@@ -92,15 +92,17 @@ const TodoApp = () => {
   };
 
   const handleEditGroupTitle = (groupIndex, newTitle) => {
-    let updatedTodoLists = [...todoLists];
-    // Update the group name at the specified index
-    updatedTodoLists[groupIndex].todogroupname = newTitle;
+    if (newTitle !== "") {
+      let updatedTodoLists = [...todoLists];
+      // Update the group name at the specified index
+      updatedTodoLists[groupIndex].todogroupname = newTitle;
 
-    // Update the state with the new todoLists
-    setTodoLists(updatedTodoLists);
+      // Update the state with the new todoLists
+      setTodoLists(updatedTodoLists);
 
-    // Save the updated todoLists to localStorage
-    localStorage.setItem("todolists", JSON.stringify(updatedTodoLists));
+      // Save the updated todoLists to localStorage
+      localStorage.setItem("todolists", JSON.stringify(updatedTodoLists));
+    }
   };
 
   // console.log("first: ", todoGroup);
