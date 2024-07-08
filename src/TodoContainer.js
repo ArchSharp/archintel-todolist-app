@@ -14,11 +14,14 @@ export const TodoContainer = ({
   isCompletedTodo,
   modifyTodoGroup,
 }) => {
+  const [todoLists, setTodoLists] = useState(
+    JSON.parse(localStorage.getItem("todolists")) || []
+  );
   const [showTodos, setShowTodos] = useState(false);
   const [isEditGroup, setIsEditGroup] = useState(false);
-  const [newTitle, setNewTitle] = useState(group.todogroupname);
+  const [newTitle, setNewTitle] = useState(todoLists[groupIndex].todogroupname);
 
-  console.log("group.todogroupname: ", group.todogroupname);
+  console.log("group.todogroupname: ", newTitle);
 
   return (
     <div className="todo-list-container" key={groupIndex}>
@@ -39,7 +42,7 @@ export const TodoContainer = ({
               padding: "5px 0px 5px 7px",
             }}
           >
-            {group.todogroupname}
+            {newTitle}
           </h4>
         ) : (
           <input
